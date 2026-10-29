@@ -1,0 +1,383 @@
+import {
+  LayoutDashboard,
+  Activity,
+  Users,
+  GraduationCap,
+  HeartHandshake,
+  BookOpen,
+  CalendarCheck,
+  CreditCard,
+  CalendarDays,
+  FileCheck2,
+  FolderArchive,
+  Bot,
+  MessageSquare,
+  BarChart3,
+  Settings,
+  BookMarked,
+  ClipboardList,
+  Calendar,
+  Layers,
+  UserCheck,
+  UserPlus,
+} from 'lucide-react';
+import { NavSection } from '../types/navigation';
+
+export const ADMIN_NAV_SECTIONS: NavSection[] = [
+  {
+    title: 'CORE OVERSIGHT',
+    items: [
+      {
+        title: 'Dashboard',
+        href: '/admin',
+        icon: LayoutDashboard,
+        roles: ['admin', 'super_admin'],
+        permission: 'school:read',
+      },
+      {
+        title: 'Daily Operations',
+        href: '/admin/operations',
+        icon: Activity,
+        roles: ['admin', 'super_admin'],
+        permission: 'school:read',
+      },
+      {
+        title: 'Students',
+        href: '/admin/students',
+        icon: GraduationCap,
+        roles: ['admin', 'super_admin'],
+        permission: 'users:read',
+        badge: '1,420',
+      },
+      {
+        title: 'Teachers',
+        href: '/admin/teachers',
+        icon: Users,
+        roles: ['admin', 'super_admin'],
+        permission: 'users:read',
+        badge: '84',
+      },
+      {
+        title: 'Parents',
+        href: '/admin/parents',
+        icon: HeartHandshake,
+        roles: ['admin', 'super_admin'],
+        permission: 'users:read',
+      },
+    ],
+  },
+  {
+    title: 'ACADEMICS & CURRICULUM',
+    items: [
+      {
+        title: 'Academic Sessions',
+        href: '/admin/academic-sessions',
+        icon: Calendar,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Classes',
+        href: '/admin/classes',
+        icon: BookMarked,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Sections',
+        href: '/admin/sections',
+        icon: Layers,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Subjects',
+        href: '/admin/subjects',
+        icon: BookOpen,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Subject Assignments',
+        href: '/admin/subject-assignments',
+        icon: UserCheck,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Enrollments & Transfers',
+        href: '/admin/enrollments',
+        icon: UserPlus,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Attendance',
+        href: '/admin/attendance',
+        icon: CalendarCheck,
+        roles: ['admin', 'super_admin'],
+        permission: 'attendance:view_all',
+      },
+      {
+        title: 'Timetable',
+        href: '/admin/timetable',
+        icon: CalendarDays,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Homework',
+        href: '/admin/homework',
+        icon: ClipboardList,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+      {
+        title: 'Exams & Results',
+        href: '/admin/exams',
+        icon: FileCheck2,
+        roles: ['admin', 'super_admin'],
+        permission: 'exams:manage',
+      },
+      {
+        title: 'Study Materials',
+        href: '/admin/study-materials',
+        icon: FolderArchive,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+      },
+    ],
+  },
+  {
+    title: 'FINANCE, COMMS & ADMIN',
+    items: [
+      {
+        title: 'Fees & Invoicing',
+        href: '/admin/fees',
+        icon: CreditCard,
+        roles: ['admin', 'super_admin'],
+        permission: 'fees:view_all',
+      },
+      {
+        title: 'Reports & Analytics',
+        href: '/admin/reports',
+        icon: BarChart3,
+        roles: ['admin', 'super_admin'],
+        permission: 'reports:generate',
+      },
+      {
+        title: 'AI Assistant',
+        href: '/admin/ai-assistant',
+        icon: Bot,
+        roles: ['admin', 'super_admin'],
+        permission: 'academic:manage',
+        badge: 'Beta',
+        badgeVariant: 'secondary',
+      },
+      {
+        title: 'Messages & Notices',
+        href: '/admin/messages',
+        icon: MessageSquare,
+        roles: ['admin', 'super_admin'],
+        permission: 'announcements:create',
+        badge: 3,
+      },
+      {
+        title: 'School Settings',
+        href: '/admin/settings',
+        icon: Settings,
+        roles: ['admin', 'super_admin'],
+        permission: 'settings:update',
+      },
+    ],
+  },
+];
+
+export const TEACHER_NAV_SECTIONS: NavSection[] = [
+  {
+    title: 'FACULTY WORKSPACE',
+    items: [
+      {
+        title: 'Teacher Dashboard',
+        href: '/teacher',
+        icon: LayoutDashboard,
+        roles: ['teacher'],
+      },
+      {
+        title: 'My Assigned Classes',
+        href: '/teacher/classes',
+        icon: BookMarked,
+        roles: ['teacher'],
+      },
+      {
+        title: 'Take Attendance',
+        href: '/teacher/attendance',
+        icon: CalendarCheck,
+        roles: ['teacher'],
+      },
+      {
+        title: 'Homework & Grading',
+        href: '/teacher/homework',
+        icon: ClipboardList,
+        roles: ['teacher'],
+        badge: '18 due',
+      },
+      {
+        title: 'Class Timetable',
+        href: '/teacher/timetable',
+        icon: CalendarDays,
+        roles: ['teacher'],
+      },
+      {
+        title: 'Exam Scorecards',
+        href: '/teacher/exams',
+        icon: FileCheck2,
+        roles: ['teacher'],
+      },
+      {
+        title: 'Study Materials',
+        href: '/teacher/study-materials',
+        icon: FolderArchive,
+        roles: ['teacher'],
+      },
+      {
+        title: 'AI Teaching Aide',
+        href: '/teacher/ai-assistant',
+        icon: Bot,
+        roles: ['teacher'],
+      },
+      {
+        title: 'Messages & Queries',
+        href: '/teacher/messages',
+        icon: MessageSquare,
+        roles: ['teacher'],
+      },
+    ],
+  },
+];
+
+export const STUDENT_NAV_SECTIONS: NavSection[] = [
+  {
+    title: 'STUDENT PORTAL',
+    items: [
+      {
+        title: 'Student Dashboard',
+        href: '/student',
+        icon: LayoutDashboard,
+        roles: ['student'],
+      },
+      {
+        title: 'My Schedule',
+        href: '/student/timetable',
+        icon: CalendarDays,
+        roles: ['student'],
+      },
+      {
+        title: 'My Attendance',
+        href: '/student/attendance',
+        icon: CalendarCheck,
+        roles: ['student'],
+      },
+      {
+        title: 'Homework & Tasks',
+        href: '/student/homework',
+        icon: ClipboardList,
+        roles: ['student'],
+        badge: 3,
+      },
+      {
+        title: 'Study Materials',
+        href: '/student/study-materials',
+        icon: FolderArchive,
+        roles: ['student'],
+      },
+      {
+        title: 'Exam Grades',
+        href: '/student/exams',
+        icon: FileCheck2,
+        roles: ['student'],
+      },
+      {
+        title: 'Fee Status',
+        href: '/student/fees',
+        icon: CreditCard,
+        roles: ['student'],
+      },
+      {
+        title: 'AI Study Companion',
+        href: '/student/ai-assistant',
+        icon: Bot,
+        roles: ['student'],
+      },
+      {
+        title: 'Messages',
+        href: '/student/messages',
+        icon: MessageSquare,
+        roles: ['student'],
+      },
+    ],
+  },
+];
+
+export const PARENT_NAV_SECTIONS: NavSection[] = [
+  {
+    title: 'FAMILY OVERVIEW',
+    items: [
+      {
+        title: 'Parent Dashboard',
+        href: '/parent',
+        icon: LayoutDashboard,
+        roles: ['parent'],
+      },
+      {
+        title: 'Ward Attendance',
+        href: '/parent/ward-attendance',
+        icon: CalendarCheck,
+        roles: ['parent'],
+      },
+      {
+        title: 'Academic Performance',
+        href: '/parent/ward-exams',
+        icon: FileCheck2,
+        roles: ['parent'],
+      },
+      {
+        title: 'Homework Tracker',
+        href: '/parent/ward-homework',
+        icon: ClipboardList,
+        roles: ['parent'],
+      },
+      {
+        title: 'Study Materials',
+        href: '/parent/ward-materials',
+        icon: FolderArchive,
+        roles: ['parent'],
+      },
+      {
+        title: 'Fee Dues & Receipts',
+        href: '/parent/fees',
+        icon: CreditCard,
+        roles: ['parent'],
+        badge: 'Due',
+      },
+      {
+        title: 'School Timetable',
+        href: '/parent/timetable',
+        icon: CalendarDays,
+        roles: ['parent'],
+      },
+      {
+        title: 'Teacher Communication',
+        href: '/parent/messages',
+        icon: MessageSquare,
+        roles: ['parent'],
+      },
+      {
+        title: 'AI Family Assistant',
+        href: '/parent/ai-assistant',
+        icon: Bot,
+        roles: ['parent'],
+      },
+    ],
+  },
+];

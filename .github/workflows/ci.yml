@@ -1,0 +1,38 @@
+name: Continuous Integration & Deployment Quality Gates
+
+on:
+  push:
+    branches: [main, master, staging]
+  pull_request:
+    branches: [main, master, staging]
+
+jobs:
+  verify:
+    name: Verify, Test & Production Build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install All Dependencies
+        run: npm run install:all
+
+      - name: Run Full Test Suite (20 Verification Suites including Production Smoke)
+        run: npm test
+
+      - name: Compile Production Client (Vite)
+        run: npm run build:client
+
+      - name: Compile Production Server (TypeScript)
+        run: npm run build:server

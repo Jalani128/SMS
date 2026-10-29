@@ -1,0 +1,50 @@
+services:
+  # EduManage Backend & Static Serving API Container
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edumanage-api
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - API_PREFIX=/api/v1
+      - CLIENT_URL=http://localhost:5000
+      - ALLOWED_ORIGINS=http://localhost:5000,http://localhost:5173
+      - MONGODB_URI=mongodb://mongo:27017/edumanage_db
+      - JWT_SECRET=production_docker_compose_jwt_secret_minimum_32_characters_long
+      - JWT_REFRESH_SECRET=production_docker_compose_refresh_secret_min_32_characters
+      - COOKIE_SECRET=production_docker_compose_cookie_secret_minimum_32_chars
+      - AUTO_ACTIVATE_SCHOOLS=true
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:5000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # Dedicated MongoDB Database Service
+  mongo:
+    image: mongo:7.0
+    container_name: edumanage-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  mongo_data:
+    driver: local
